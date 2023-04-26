@@ -1,10 +1,10 @@
-def merge_sort(string):
-    if len(string) <= 1:
-        return string
+def merge_sort(string_or_list):
+    if len(string_or_list) <= 1:
+        return string_or_list
 
-    mid = len(string) // 2
-    left_half = string[:mid]
-    right_half = string[mid:]
+    mid = len(string_or_list) // 2
+    left_half = string_or_list[:mid]
+    right_half = string_or_list[mid:]
 
     left_half = merge_sort(left_half)
     right_half = merge_sort(right_half)
@@ -27,12 +27,12 @@ def merge(left_half, right_half):
     result += left_half[i:]
     result += right_half[j:]
 
-    return "".join(result)
+    return result
 
 
 def is_anagram(first_string, second_string):
-    first_sorted_string = merge_sort(first_string.lower())
-    second_sorted_string = merge_sort(second_string.lower())
+    first_sorted_string = ''.join(merge_sort(first_string.lower()))
+    second_sorted_string = ''.join(merge_sort(second_string.lower()))
 
     if not first_sorted_string or not second_sorted_string:
         return (first_sorted_string, second_sorted_string, False)
